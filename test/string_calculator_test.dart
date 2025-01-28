@@ -28,5 +28,9 @@ void main() {
     final calculator = StringCalculator();
     expect(calculator.add("//;\n1;2"), 3);
   });
+  test('Throw exception for negative numbers', () {
+    final calculator = StringCalculator();
+    expect(() => calculator.add("1,-2,3"), throwsA(contains("negative numbers not allowed: -2")));
+  });
 
 }

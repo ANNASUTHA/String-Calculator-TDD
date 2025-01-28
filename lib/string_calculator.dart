@@ -2,9 +2,11 @@
 class StringCalculator {
   int add(String numbers) {
     if (numbers.isEmpty) return 0;
-    final parts = numbers.split(',');
+    final delimiters = [',', '\n'];
+    final parts = numbers.split(RegExp(delimiters.join('|')));
     return parts.map(int.parse).reduce((a, b) => a + b);
   }
+
 
 
 }

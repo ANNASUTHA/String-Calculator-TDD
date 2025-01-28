@@ -33,4 +33,14 @@ void main() {
     expect(() => calculator.add("1,-2,3"), throwsA(contains("negative numbers not allowed: -2")));
   });
 
+  // TODO Tried Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
+  test('Numbers greater than 1000 should be ignored', () {
+    final calculator = StringCalculator();
+    expect(calculator.add("2,1001"), 2);
+  });
+  test('Ignore numbers greater than 1000 in a larger list', () {
+    final calculator = StringCalculator();
+    expect(calculator.add("2,1001,6,2000,7"), 15); // Only 2, 6, and 7 are summed.
+  });
+
 }
